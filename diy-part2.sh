@@ -18,3 +18,8 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/M
 
 # Modify hostname
 sed -i 's/OpenWrt/Sheep-Router/g' package/base-files/files/bin/config_generate
+
+# 更新 Sing-box：删除原有版本并克隆最新版
+echo "==> 更新 sing-box 到最新版本"
+rm -rf feeds/packages/net/sing-box
+git clone --depth 1 https://github.com/SagerNet/sing-box feeds/packages/net/sing-box
