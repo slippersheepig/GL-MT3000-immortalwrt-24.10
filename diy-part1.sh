@@ -16,8 +16,3 @@
 # Add a feed source
 #echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 #echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
-
-# 更新 Sing-box：删除原有版本并克隆最新版
-echo "==> 更新 sing-box 到最新版本"
-rm -rf feeds/packages/net/sing-box
-git clone --depth 1 https://github.com/SagerNet/sing-box feeds/packages/net/sing-box
