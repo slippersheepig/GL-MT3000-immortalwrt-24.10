@@ -21,5 +21,11 @@ sed -i 's/OpenWrt/Sheep-Router/g' package/base-files/files/bin/config_generate
 
 # 更新 Sing-box：删除原有版本并克隆最新版
 echo "==> 更新 sing-box 到最新版本"
-rm -rf feeds/packages/net/sing-box
-git clone --depth 1 https://github.com/immortalwrt/packages/tree/master/net/sing-box feeds/packages/net/sing-box
+git clone --depth 1 --no-checkout https://github.com/immortalwrt/packages.git tmp-sing-box
+cd tmp-sing-box
+git sparse-checkout init --cone
+git sparse-checkout set net/sing-box
+git checkout
+mv net/sing-box ../feeds/packages/net/
+cd ..
+rm -rf tmp-sing-box
