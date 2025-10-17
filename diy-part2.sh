@@ -18,20 +18,3 @@ sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/M
 
 # Modify hostname
 sed -i 's/OpenWrt/Sheep-Router/g' package/base-files/files/bin/config_generate
-
-rm -rf feeds/packages/net/adguardhome
-rm -rf feeds/luci/applications/luci-app-adguardhome
-rm -rf feeds/luci/applications/luci-app-homeproxy
-git clone --depth 1 https://github.com/immortalwrt/homeproxy package/luci-app-homeproxy
-echo "==> 使用 kenzok8 的 adguardhome"
-git clone --depth 1 https://github.com/kenzok8/openwrt-packages tmp-kenzo
-mv tmp-kenzo/luci-app-adguardhome package/
-mv tmp-kenzo/adguardhome package/
-rm -rf tmp-kenzo
-echo "==> 更新 sing-box 到最新版本"
-rm -rf feeds/packages/net/sing-box
-git clone --depth 1 https://github.com/immortalwrt/packages tmp-sing-box
-cd tmp-sing-box
-mv net/sing-box ../feeds/packages/net/
-cd ..
-rm -rf tmp-sing-box
