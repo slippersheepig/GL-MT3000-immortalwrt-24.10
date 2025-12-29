@@ -23,9 +23,7 @@ sed -i 's/OpenWrt/Sheep-Router/g' package/base-files/files/bin/config_generate
 echo "==> 更新 sing-box 到最新版本"
 rm -rf feeds/packages/net/sing-box
 git clone --depth 1 https://github.com/immortalwrt/packages tmp-sing-box
-cd tmp-sing-box
-mv net/sing-box ../feeds/packages/net/
-cd ..
+mv tmp-sing-box/net/sing-box feeds/packages/net/
 rm -rf tmp-sing-box
 # 更新 adguardhome：删除原有版本并克隆最新版
 echo "==> 更新 adguardhome 到最新版本"
@@ -33,3 +31,5 @@ rm -rf feeds/packages/net/adguardhome
 git clone --depth 1 https://github.com/kenzok8/openwrt-packages tmp-kenzo
 mv tmp-kenzo/adguardhome feeds/packages/net/
 rm -rf tmp-kenzo
+sed -i '\#files/adguardhome#d' feeds/packages/net/adguardhome/Makefile
+sed -i '\#\$(INSTALL_DIR) \$(1)/etc#d' feeds/packages/net/adguardhome/Makefile
