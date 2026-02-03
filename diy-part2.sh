@@ -35,7 +35,7 @@ sed -i '\#files/adguardhome#d' feeds/packages/net/adguardhome/Makefile
 sed -i '\#\$(INSTALL_DIR) \$(1)/etc#d' feeds/packages/net/adguardhome/Makefile
 
 # ---------------------------------------------------------
-更新 Golang 到最新版本
+# 更新 Golang 到最新版本
 # ---------------------------------------------------------
 echo "==> 替换 Golang 为 sbwml 版本"
 # 删除默认的 golang 及其所有相关包
