@@ -37,13 +37,9 @@ sed -i '\#\$(INSTALL_DIR) \$(1)/etc#d' feeds/packages/net/adguardhome/Makefile
 # ---------------------------------------------------------
 更新 Golang 到最新版本
 # ---------------------------------------------------------
-echo "==> 更新 Golang 到 immortalwrt/packages master 最新版本"
-# 1. 删除旧的 golang
+echo "==> 替换 Golang 为 sbwml 版本"
+# 删除默认的 golang 及其所有相关包
 rm -rf feeds/packages/lang/golang
-# 2. 克隆 immortalwrt/packages 的 master 分支 (包含最新 Go)
-git clone --depth 1 -b master https://github.com/immortalwrt/packages.git tmp-golang-update
-# 3. 将新 golang 移动到位
-mv tmp-golang-update/lang/golang feeds/packages/lang/
-# 4. 清理临时文件
-rm -rf tmp-golang-update
+# 克隆 sbwml 的高性能 Golang 仓库
+git clone --depth 1 https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
 # ---------------------------------------------------------
