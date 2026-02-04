@@ -33,13 +33,3 @@ mv tmp-kenzo/adguardhome feeds/packages/net/
 rm -rf tmp-kenzo
 sed -i '\#files/adguardhome#d' feeds/packages/net/adguardhome/Makefile
 sed -i '\#\$(INSTALL_DIR) \$(1)/etc#d' feeds/packages/net/adguardhome/Makefile
-
-# ---------------------------------------------------------
-# 更新 Golang 到最新版本
-# ---------------------------------------------------------
-echo "==> 替换 Golang 为 sbwml 版本"
-# 删除默认的 golang 及其所有相关包
-rm -rf feeds/packages/lang/golang
-# 克隆 sbwml 的高性能 Golang 仓库
-git clone --depth 1 https://github.com/sbwml/packages_lang_golang feeds/packages/lang/golang
-# ---------------------------------------------------------
